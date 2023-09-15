@@ -1,3 +1,5 @@
+/*const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Julio'];
+
 function preguntas(consulta){
   if (consulta === "horario de atencion"){
     alert ("horario de atencion 8:00am hasta 13:00pm" +"\n" + "17:00pm hasta 21:00")
@@ -7,6 +9,7 @@ function preguntas(consulta){
     alert ("error intente de nuevo")
   }
 }
+
 function elegirLaConsulta(){
   let consulta = prompt ("elija la consulta sobre:" + "\n" + " horario de atencion" + "\n " + "metodo de pago");
   if (consulta === "horario de atencion" || consulta === "metodo de pago"){
@@ -15,6 +18,7 @@ function elegirLaConsulta(){
     alert ("opcion invalida");
   }
 }
+
 function diasDeSemana(dias) {
   const numeroDia = prompt("Escoja un dia de la semana").toLowerCase();
   let dia;
@@ -50,6 +54,7 @@ function diasDeSemana(dias) {
     alert (`elegiste el dia, ${dia}`);
   }
 }
+
 function sistemaDeTurnos(){
   let primerTurno = 1;
   let ultimoTurno = 60;
@@ -63,6 +68,7 @@ function sistemaDeTurnos(){
     break
   }
 }
+
 function salida(){
   alert("Fin de proceso");
 }
@@ -85,5 +91,9 @@ function sistemaDeAtencion() {
         sistemaDeAtencion();
   }
 }
-sistemaDeAtencion();
 
+sistemaDeAtencion();*/
+
+/*const listaDeDoctores = ["Maria Gaspar", "Cristian Ochoa", "Alejandro Gutierrez", "Ivan Gonzales"];
+const escogerMedico = prompt("Escoge al doctor que pueda ayudarte con tu problema" + "\n" + "Pediatria" + "\n" + "Dermatologia" + "\n" + "Cardiologia" + "\n" + "Obstetria");
+listaDeDoctores.push(escogerMedico).toLowerCase();*/
