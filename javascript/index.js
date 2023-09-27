@@ -1,3 +1,14 @@
+function Medicina (nombre, precio, funcion){
+  this.nombre = nombre
+  this.precio = precio;
+  this.funcion = funcion;
+}
+const medicina1 = new Medicina ("Ibupofreno", 850, "Ayuda a bajar la fiebre y baja la fiebre");
+const medicina2 = new Medicina ("Aerotina",975, "Sirve para las alergias");
+const medicina3 = new Medicina ("Sertal Perlas",1120, "Para aliviar dolores digestivos");
+const medicina4 = new Medicina ("Geniol",1050, "Para dolores de cabeza, musculares y articulares");
+
+
 function preguntas(consulta){
   if (consulta === "horario de atencion"){
     alert ("horario de atencion 8:00am hasta 13:00pm" +"\n" + "17:00pm hasta 21:00")
@@ -17,18 +28,6 @@ function preguntas(consulta){
   }
 }
 
-function Medicina (nombre, precio, funcion){
-  this.nombre = nombre
-  this.precio = precio;
-  this.funcion = funcion;
-}
-const medicina1 = new Medicina ("Ibupofreno", 850, "Ayuda a bajar la fiebre y baja la fiebre");
-const medicina2 = new Medicina ("Aerotina",975, "Sirve para las alergias");
-const medicina3 = new Medicina ("Sertal Perlas",1120, "Para aliviar dolores digestivos");
-const medicina4 = new Medicina ("Geniol",1050, "Para dolores de cabeza, musculares y articulares");
-
-const minimo = 1;
-const maximo = 10;
 
 function elegirLaConsulta(){
   let consulta = prompt ("elija la consulta sobre:" + "\n" + " horario de atencion" + "\n " + "metodo de pago" + "\n " + "farmacia");
@@ -106,8 +105,6 @@ function sistemaDeAtencion() {
       case "3":
         salida();
         break;
-      case "4":
-
       default:
         alert ("error en la operacion")
         sistemaDeAtencion();
@@ -118,65 +115,73 @@ sistemaDeAtencion();
 
 const doctores = [
   {
-    genero: 'Masculino',
+    genero: 'Hombre',
     nombre:'Cristian Ochoa',
     especialidad: 'Pediatria',
     duracion: 'Tiene 9 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad de Buenos Aires',
-    foto: './img/pediatra.jpg',
+    foto: '../img/pediatra.jpg',
   },
   {
-    genero: 'Femenino',
+    genero: 'Mujer',
     nombre:'Martina Luna',
     especialidad: 'Pediatria',
     duracion: 'Tiene 12 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad del Salvador',
+    foto: '../img/pediatra.jpg',
   },
   {
-    genero: 'Masculino',
+    genero: 'Hombre',
     nombre:'Alejandro Gutierrez',
     especialidad: 'Dermatologia',
     duracion: 'Tiene 1 años ejerciendo la carrera',
     recibido: 'Graduado de la Fundación Barcelona',
+    foto: '../img/pediatra.jpg',
   },
   {
-    genero: 'Femenino',
+    genero: 'Mujer',
     nombre:'Emilce Dominguez',
     especialidad: 'Dermatologia',
     duracion: 'Tiene 5 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad Católica Argentina',
+    foto: '../img/pediatra.jpg',
   },
   {
-    genero: 'Masculino',
+    genero: 'Hombre',
     nombre:'Ivan Gonzales',
     especialidad: 'Cardiologia',
     duracion: 'Tiene 11 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad Nacional de Rosario',
+    foto: '../img/pediatra.jpg',
   },
   {
-    genero: 'Femenino',
+    genero: 'Mujer',
     nombre:'Sofia Perez',
     especialidad: 'Cardiologia',
     duracion: 'Tiene 6 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad Nacional de Tucúman',
+    foto: '../img/pediatra.jpg',
   },
   {
-    genero: 'Masculino',
+    genero: 'Hombre',
     nombre:'Lucas Torres',
     especialidad: 'Fisioterapia',
     duracion: 'Tiene 7 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad de ciencias Empresariales y Sociales',
+    foto: '../img/pediatra.jpg',
   },
    {
-    genero: 'Femenino',
+    genero: 'Mujer',
     nombre:'Daniela Guzman',
     especialidad: 'Fisioterapia',
     duracion: 'Tiene 3 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad Austral',
+    foto: '../img/pediatra.jpg',
   },
 ];
 
-/*let genero = prompt ("Quiere ser atendido por un hombre o una mujer");
+//escribir en mayuscula la primera letra del genero y la clase de doctor
+let genero = prompt ("Quiere ser atendido por un Hombre o una Mujer");
 let especialidad = prompt("Escoge al doctor que pueda ayudarte con tu problema" + "\n" + "Pediatria" + "\n" + "Dermatologia" 
 + "\n" + "Cardiologia" + "\n" + "Fisioterapia");
 let duracion;
@@ -188,39 +193,38 @@ const seleccionarDoctor = {
 }
 
 function verDoctores (doctores) {
-  Doctores.forEach(item => console.log (item.genero + ' - ' +  item.especialidad + ' - ' + item.duracion ));
- 
+  doctores.forEach(item => alert (
+    item.genero + '\n' +   
+    item.nombre + '\n' + 
+    item.especialidad + '\n' + 
+    item.duracion + '\n' + 
+    item.recibido 
+    ));
 }
 
 function elegirDoctor (){
    const busqueda = doctores.filter(filtrarGenero).filter(filtrarEspecialidad);
+   console.log(busqueda)
    if (busqueda.length>0){
+
     verDoctores (busqueda)
    }else{
-    console.error ("sin resultado");
+    console.error ("No hay resultado");
    }
 }
 
 function filtrarGenero (item){
-  if (genero){
+  if (seleccionarDoctor.genero){
     return item.genero === seleccionarDoctor.genero;
   }
   return item;
 }
 
 function filtrarEspecialidad (item){
-  if (especialidad){
+  if (seleccionarDoctor.especialidad){
     return item.especialidad === seleccionarDoctor.especialidad;
   }
   return item;
 }
 
-/*function filtrarDuracion (item){
-  if (duracion){
-    return item.duracion === duracion;
-  }
-  return item;
-}*/
-
-
-//elegirDoctor ();
+elegirDoctor ();
