@@ -3,8 +3,70 @@
     margin: 0;
     box-sizing: border-box;
 }
+main{
+    background-color: aquamarine;
+}
 h1{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 40px;
     
+}
+.calendario{
+    padding: 40px 25px 30px 25px;
+}
+h2{
+    text-align: center;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #5c5959;
+    text-align: center;
+    padding: 8px;
+}
+td{
+    background-color: #f2f2f2;
+
+}
+th {
+    background-color: #f2f2f2;
+}
+.farmacia{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.farmacia .articuloUno div{
+    border: none;
+    width: 200px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: start;
+}
+.farmacia .articuloDos div{
+    border: none;
+    width: 200px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: start;
+}
+.farmacia .articuloTres div{
+    border: none;
+    width: 200px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: start;
+}
+.farmacia .articuloCuatro div{
+    border: none;
+    width: 200px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: start;
+}
+.farmacia div {
+    border: 7px black solid;
+    width: 500px;
+    background-color: rgb(255, 255, 255);
+    margin: 30px;
+}
+.farmacia div img{
+    width: 300px;
 }

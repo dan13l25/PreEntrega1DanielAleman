@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
+
 <body>
     <header>
         <nav class="menu">
@@ -17,17 +19,86 @@
         <section>
             <div>
                 <h2>Sobre Nosotros</h2>
-                <p>Somos un nuevo hospital que acaba de abrir pero nuestro personal esta capacitado para ayudarlos con su emergencias medicas y contamos con el equipo necesario para trabajar</p>
+                <p>Somos un nuevo hospital que acaba de abrir pero nuestro personal esta capacitado para ayudarlos con
+                    su emergencias medicas y contamos con el equipo necesario para trabajar</p>
                 <img src="./img/Hospital.jpg" alt="">
             </div>
-            <div class="calendario">
-               
+            <div>
+                <select name="" id="atencion">
+                    <option value="consulta">Consultas</option>
+                    <option value="turnos" class="turnos">Pedir turnos</option>
+                    <option value="comprar" class="comprar">Comprar medicamento de venta libre</option>
+                    <option value="salir" class="salir">Salir</option>
+                </select>
+                <label>
+                    <input type="radio" name="genero" value="hombre"> Hombre
+                </label>
+                <label>
+                    <input type="radio" name="genero" value="mujer"> Mujer
+                </label>
             </div>
+            <div class="calendario">
+                <h1>Calendario</h1>
+                <div class="nav-buttons">
+                    <button id="btnMesAnterior">Mes Anterior</button>
+                    <button id="btnMesSiguiente">Mes Siguiente</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Domingo</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sábado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-calendario">
+                    </tbody>
+                </table>
+            </div>
+            <div class="consulta">
+
+            </div>
+            <section class="farmacia">
+                <div class="articuloUno">
+                    <img src="./img/aerotina.jpg" alt="caja de aerotina">
+                    <div class="descripcion">
+                        <button class="aerotina">Ver descripcion</button>
+                        <button class="ocultar">Ocultar descripcion</button>
+                    </div>
+                </div>
+                <div class="articuloDos">
+                    <img src="./img/geniol.png" alt="caja de geniol">
+                    <div>
+                        <button class="geniol">Ver descripcion</button>
+                        <button class="ocultarDos">Ocultar descripcion</button>
+                    </div>
+                </div>
+                <div class="articuloTres">
+                    <img src="./img/ibuprofeno.jpg" alt="caja de ibuprofeno">
+                    <div>
+                        <button class="ibuprofeno">Ver descripcion</button>
+                        <button class="ocultarTres">Ocultar descripcion</button>
+                    </div>
+                </div>
+                <div class="articuloCuatro">
+                    <img src="./img/sertal perlas.jpg" alt="caja de sertal perlas">
+                    <div>
+                        <button class="sertal">Ver descripcion</button>
+                        <button class="ocultarCuatro">Ocultar descripcion</button>
+                    </div>
+                </div>
+            </section>
         </section>
     </main>
     <footer>
 
     </footer>
-     <script src="javascript/index.js" defer></script>
+    <script src="javascript/index.js" defer></script>
+    <script src="javascript/eventos.js" defer></script>
 </body>
+
 </html>
