@@ -25,18 +25,15 @@
             </div>
             <div>
                 <select name="" id="atencion">
+                    <option value="">Sistema de atencion</option>
                     <option value="consulta">Consultas</option>
                     <option value="turnos" class="turnos">Pedir turnos</option>
-                    <option value="comprar" class="comprar">Comprar medicamento de venta libre</option>
                     <option value="salir" class="salir">Salir</option>
                 </select>
-                <label>
-                    <input type="radio" name="genero" value="hombre"> Hombre
-                </label>
-                <label>
-                    <input type="radio" name="genero" value="mujer"> Mujer
-                </label>
+                
             </div>
+            <div class="consulta"></div>
+            <div class="doctor"></div>
             <div class="calendario">
                 <h1>Calendario</h1>
                 <div class="nav-buttons">
@@ -59,9 +56,14 @@
                     </tbody>
                 </table>
             </div>
-            <div class="consulta">
-
+            <div class="horasMañana"></div>
+            <div>
+                <p ></p>
+                <p class="horario"></p>
+                <p class="turno"></p>
+                <p class="horaEscogida"></p>
             </div>
+            <h3>Farmacia online</h3>
             <section class="farmacia">
                 <div class="articuloUno">
                     <img src="./img/aerotina.jpg" alt="caja de aerotina">
@@ -93,6 +95,29 @@
                 </div>
             </section>
         </section>
+        <form id="doctorSelectionForm">
+            <label for="generoSelect">Género:</label>
+            <select id="generoSelect">
+              <option value="">Todos</option>
+              <option value="Hombre">Hombre</option>
+              <option value="Mujer">Mujer</option>
+            </select>
+        
+            <label for="especialidadSelect">Especialidad:</label>
+            <select id="especialidadSelect">
+              <option value="">Todas</option>
+              <option value="Pediatria">Pediatria</option>
+              <option value="Dermatologia">Dermatologia</option>
+              <option value="Cardiologia">Cardiologia</option>
+              <option value="Fisioterapia">Fisioterapia</option>
+            </select>
+        
+            <button type="button" onclick="filtrarDoctores()">Filtrar</button>
+          </form>
+        
+          <div id="resultadoDoctores">
+            <!-- Aquí se mostrarán los doctores filtrados -->
+          </div>
     </main>
     <footer>
 

@@ -73,17 +73,7 @@ function diasDeSemana(dias) {
   }
 }
 
-function sistemaDeTurnos(primerTurno, ultimoTurno) {
-  let numeroDeTurno = Math.ceil(Math.random() * 70);
-  while (primerTurno >= 1 && ultimoTurno <= 60) {
-    if (numeroDeTurno <= ultimoTurno) {
-      alert("Su número de turno es " + numeroDeTurno);
-    } else {
-      alert("Ya no hay turnos para ese día");
-    }
-    break;
-  }
-}
+
 
 function salida() {
   alert("Fin de proceso");
@@ -166,7 +156,7 @@ const doctores = [
     especialidad: 'Pediatria',
     duracion: 'Tiene 9 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad de Buenos Aires',
-    foto: 'pediatra.jpg',
+    foto: './img/pediatra.jpg',
   },
   {
     genero: 'Mujer',
@@ -174,7 +164,7 @@ const doctores = [
     especialidad: 'Pediatria',
     duracion: 'Tiene 12 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad del Salvador',
-    foto: 'pediatra.jpg',
+    foto: './img/pediatra 2.jpg',
   },
   {
     genero: 'Hombre',
@@ -182,7 +172,7 @@ const doctores = [
     especialidad: 'Dermatologia',
     duracion: 'Tiene 1 año ejerciendo la carrera',
     recibido: 'Graduado de la Fundación Barcelona',
-    foto: 'pediatra.jpg',
+    foto: './img/dermatologo.jpg',
   },
   {
     genero: 'Mujer',
@@ -190,7 +180,7 @@ const doctores = [
     especialidad: 'Dermatologia',
     duracion: 'Tiene 5 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad Católica Argentina',
-    foto: 'pediatra.jpg',
+    foto: './img/Dermatologa.jpg',
   },
   {
     genero: 'Hombre',
@@ -198,7 +188,7 @@ const doctores = [
     especialidad: 'Cardiologia',
     duracion: 'Tiene 11 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad Nacional de Rosario',
-    foto: 'pediatra.jpg',
+    foto: './img/cardiologo.jpg',
   },
   {
     genero: 'Mujer',
@@ -206,7 +196,7 @@ const doctores = [
     especialidad: 'Cardiologia',
     duracion: 'Tiene 6 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad Nacional de Tucumán',
-    foto: 'pediatra.jpg',
+    foto: './img/cardiologa.jpg',
   },
   {
     genero: 'Hombre',
@@ -214,7 +204,7 @@ const doctores = [
     especialidad: 'Fisioterapia',
     duracion: 'Tiene 7 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad de Ciencias Empresariales y Sociales',
-    foto: 'pediatra.jpg',
+    foto: './img/fisioterapia.jpg',
   },
   {
     genero: 'Mujer',
@@ -222,55 +212,51 @@ const doctores = [
     especialidad: 'Fisioterapia',
     duracion: 'Tiene 3 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad Austral',
-    foto: 'pediatra.jpg',
+    foto: './img/Fisioterapia 2.jpg',
   },
 ];
 
-let mesActual = new Date();
-
-function generarCalendario() {
-  const primerDiaDelMes = new Date(mesActual.getFullYear(), mesActual.getMonth(), 1);
-  const ultimoDiaDelMes = new Date(mesActual.getFullYear(), mesActual.getMonth() + 1, 0);
-  const cuerpoCalendario = document.getElementById('cuerpo-calendario');
-  cuerpoCalendario.innerHTML = '';
-
-  let fechaActual = 1;
-
-  for (let i = 0; i < 6; i++) {
-      const fila = document.createElement('tr');
-      for (let j = 0; j < 7; j++) {
-          const celda = document.createElement('td');
-          if (i === 0 && j < primerDiaDelMes.getDay()) {
-              // Celdas vacías para los días anteriores al mes
-              celda.textContent = '';
-          } else if (fechaActual > ultimoDiaDelMes.getDate()) {
-              // Celdas vacías para los días después del mes
-              celda.textContent = '';
-          } else {
-              celda.textContent = fechaActual;
-              fechaActual++;
-          }
-          celda.addEventListener("click", function() {
-            const fechaClic = parseInt(celda.textContent, 10); 
-            if (fechaClic === 1 || fechaClic === 8 || fechaClic === 15 || fechaClic === 22 || fechaClic === 29) {
-                console.log("No se atiende los domingos");
-            } else {
-                console.log("Has hecho clic en el día " + fechaClic);
-            }
-        });
-          fila.appendChild(celda);
-      }
-      cuerpoCalendario.appendChild(fila);
+function sistemaDeTurnos(primerTurno, ultimoTurno) {
+  let numeroDeTurno = Math.ceil(Math.random() * 70);
+  while (primerTurno >= 1 && ultimoTurno <= 60) {
+    if (numeroDeTurno <= ultimoTurno) {
+      turno.innerHTML = `
+      <h3>Su número de turno es ${numeroDeTurno}</h3>
+      `
+    } else {
+      turno.innerHTML = `
+      <h3>Ya no hay turnos para ese día</h3>
+      `
+    }
+    break;
   }
-};
+}
 
-document.getElementById('btnMesAnterior').addEventListener('click', () => {
-    mesActual.setMonth(mesActual.getMonth() - 1);
-    generarCalendario();
-});
+let botonesCreados = true;
+function crearBotones() {
+  if (botonesCreados) {
+    return; 
+  }}
 
-document.getElementById('btnMesSiguiente').addEventListener('click', () => {
-    mesActual.setMonth(mesActual.getMonth() + 1);
-    generarCalendario();
+const horaElegida = document.querySelector(".horaEscogida")
+function imprimirHora(hora) {
+  let botonesCreados = false;
+
+  
+  horaElegida.innerHTML = `
+  <h3>Seleccionaste la hora ${hora}</h3>
+  `//("Seleccionaste la hora " + hora);
+const horasMañana = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM"];
+
+const horasMañanaDiv = document.querySelector(".horasMañana");
+horasMañana.forEach(function(hora) {
+  const boton = document.createElement("button");
+  boton.textContent = hora;
+  boton.addEventListener("click", function() {
+      imprimirHora(hora);
+  });
+  horasMañanaDiv.appendChild(boton);
+  botonesCreados = false;
 });
+}
 

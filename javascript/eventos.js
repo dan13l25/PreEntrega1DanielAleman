@@ -1,4 +1,4 @@
-/*const aerotina = document.querySelector(".aerotina");
+const aerotina = document.querySelector(".aerotina");
 
 aerotina.addEventListener("click", function(){
     let contenido = document.createElement("div")
@@ -60,7 +60,25 @@ sertal.addEventListener("click", function(){
     botonOcultarCuatro.addEventListener("click", function () {
     contenido.style.display = "none";
     })
-})*/
+})
+
+function agregarContenidoMedicina(elemento, medicina, botonOcultarSelector) {
+    elemento.addEventListener("click", function () {
+        let contenido = document.createElement("div");
+        contenido.innerHTML = `
+            <li>${medicina.nombre}</li>
+            <li>Precio: ${medicina.precio} pesos</li>
+            <li>Función: ${medicina.funcion}</li>
+        `;
+        elemento.parentNode.appendChild(contenido);
+        
+        const botonOcultar = document.querySelector(botonOcultarSelector);
+        botonOcultar.addEventListener("click", function () {
+            contenido.style.display = "none";
+        });
+    });
+}
+
 
 const seleccionar = document.querySelector("#atencion");
 const calendario = document.querySelector(".calendario");
@@ -71,15 +89,138 @@ seleccionar.addEventListener("change", () =>{
     if(opciónDeAtencion === "consulta"){
         consulta.innerHTML = `
         <h3>Horario de atención</h3>
-        <p>Desde 08:00 am hasta 13:00 pm" + "\n" + "17:00 pm hasta 21:00</p>
+        <p>Desde 08:00 am hasta 13:00 pm 
+        a la tarde desde 17:00 pm hasta 21:00</p>
         <h3>Metodo de pago</h3>
         <p>Se acepta tarjeta de crédito, débito, efectivo y transferencia</p>
         `;
     }else if (opciónDeAtencion === "turnos") {
         generarCalendario();
-        
-        
+        imprimirHora();
+        seleccionDeDoctor(opciónDeAtencion);
     }
 });
 
 
+let mesActual = new Date();
+
+function generarCalendario() {
+  const primerDiaDelMes = new Date(mesActual.getFullYear(), mesActual.getMonth(), 1);
+  const ultimoDiaDelMes = new Date(mesActual.getFullYear(), mesActual.getMonth() + 1, 0);
+  const cuerpoCalendario = document.getElementById('cuerpo-calendario');
+  cuerpoCalendario.innerHTML = '';
+
+  let fechaActual = 1;
+
+  for (let i = 0; i < 6; i++) {
+      const fila = document.createElement('tr');
+      for (let j = 0; j < 7; j++) {
+          const celda = document.createElement('td');
+          if (i === 0 && j < primerDiaDelMes.getDay()) {
+              celda.textContent = '';
+          } else if (fechaActual > ultimoDiaDelMes.getDate()) {
+              celda.textContent = '';
+          } else {
+              celda.textContent = fechaActual;
+              fechaActual++;
+          }
+          celda.addEventListener("click", function() {
+            const fechaClic = parseInt(celda.textContent, 10); 
+            if (fechaClic === 1 || fechaClic === 8 || fechaClic === 15 || fechaClic === 22 || fechaClic === 29) {
+                horario.innerHTML = `
+                <h3>No se atiende los domingos</h3>
+                `;
+            } else {
+                horario.innerHTML = `
+                <h3>Has elegido el día ${fechaClic} </h3> 
+                `;
+                sistemaDeTurnos(1, 60);
+                
+            }
+        });
+          fila.appendChild(celda);
+      }
+      cuerpoCalendario.appendChild(fila);
+  }
+};
+
+document.getElementById('btnMesAnterior').addEventListener('click', () => {
+    mesActual.setMonth(mesActual.getMonth() - 1);
+    generarCalendario();
+});
+
+document.getElementById('btnMesSiguiente').addEventListener('click', () => {
+    mesActual.setMonth(mesActual.getMonth() + 1);
+    generarCalendario();
+});
+
+const horario = document.querySelector (".horario");
+const turno = document.querySelector (".turno");
+
+const doctor = document.querySelector(".doctor")
+
+function seleccionDeDoctor(opciónDeAtencion) {
+    if (opciónDeAtencion === "turnos") {
+      doctor.innerHTML = `
+        <select name="" >
+          <option value="pediatria" class="pediatria">pediatria</option>
+          <option value="dermatologia" class="dermatologia">dermatologia</option>
+          <option value="cardiologia" class="cardiologia">cardiologia</option>
+          <option value="fisioterapia" class="fisioterapia">fisioterapia</option>
+        </select>
+        <label>
+            <input type="radio" name="genero" value="hombre"> Hombre
+        </label>
+        <label>
+            <input type="radio" name="genero" value="mujer"> Mujer
+        </label>
+      `;
+    }
+  }
+
+  function filtrarDoctores() {
+    const generoSeleccionado = document.getElementById('generoSelect').value;
+    const especialidadSeleccionada = document.getElementById('especialidadSelect').value;
+  
+    const resultadoDoctores = doctores.filter(doctor => {
+      if (generoSeleccionado && doctor.genero !== generoSeleccionado) {
+        return false;
+      }
+      if (especialidadSeleccionada && doctor.especialidad !== especialidadSeleccionada) {
+        return false;
+      }
+      return true;
+    });
+  
+    mostrarResultado(resultadoDoctores);
+  }
+  
+function mostrarResultado(doctoresFiltrados) {
+    const resultadoDoctoresDiv = document.getElementById('resultadoDoctores');
+    resultadoDoctoresDiv.innerHTML = '';
+  
+    if (doctoresFiltrados.length === 0) {
+      resultadoDoctoresDiv.textContent = 'No se encontraron doctores que coincidan con los criterios de búsqueda.';
+      return;
+    }
+  
+    doctoresFiltrados.forEach(doctor => {
+      const doctorDiv = document.createElement('div');
+      const foto = document.createElement('img'); 
+      foto.src = doctor.foto; 
+      foto.alt = `Foto de ${doctor.nombre}`;
+      doctorDiv.appendChild(foto);
+      
+      const texto = document.createElement('li'); // Crea un elemento de párrafo para el texto
+      texto.textContent = `
+        ${doctor.nombre} - 
+        ${doctor.especialidad} - 
+        ${doctor.genero} -
+        ${doctor.duracion} -
+        ${doctor.recibido}
+      `;
+      doctorDiv.appendChild(texto); // Agrega el párrafo con el texto al div
+      
+      resultadoDoctoresDiv.appendChild(doctorDiv);
+    });
+  }
