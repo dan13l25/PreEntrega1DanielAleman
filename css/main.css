@@ -14,8 +14,49 @@ h1{
 .calendario{
     padding: 40px 25px 30px 25px;
 }
-h2{
+.hospital {
+    background-image: url(../img/Hospital.jpg);
+    background-size: 100%; 
+    background-repeat: no-repeat; 
+    background-position: center;
+    height: 300px;
+} 
+.hospital  h2{
     text-align: center;
+    font-size: 50px;
+    margin: 30px 0px 30px 0px;
+    color: rgb(0, 0, 0);
+
+}
+.hospital  p{
+    text-align: center;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+}
+.opciones {
+    width: 500px;
+    margin: 30px 0px 0px 30px;
+}
+.opciones select{
+    width: 200px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.opciones select option{
+    font-size: 15px;
+}
+#resultadoDoctores div img {
+    width: 500px; /* Cambia el valor según el tamaño deseado */
+    height: 400px; /* Cambia el valor según el tamaño deseado */
+    margin: 50px 0px 30px 50px;
+}
+#resultadoDoctores div li{
+    margin-left: 50px;
+    font-size: 25px;
+}
+.farmaciaOnline{
+    margin: 30px 30px 30px 45px;
+    font-size: 50px;
 }
 table {
     border-collapse: collapse;
@@ -69,4 +110,20 @@ th {
 }
 .farmacia div img{
     width: 300px;
+}
+#resultados img{
+    width: 200px;
+}
+.consulta{
+    margin: 30px 0px 30px 45px;
+}
+.consulta h3{
+    font-size: 45px;
+    text-align: center;
+}
+.consulta p{
+    font-size: 30px;
+    margin: 30px 0px 30px 0px;
+    text-align: center;
+
 }

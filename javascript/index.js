@@ -180,7 +180,7 @@ const doctores = [
     especialidad: 'Dermatologia',
     duracion: 'Tiene 5 años ejerciendo la carrera',
     recibido: 'Graduado de la Universidad Católica Argentina',
-    foto: './img/Dermatologa.jpg',
+    foto: './img/dermatologa.jpg',
   },
   {
     genero: 'Hombre',

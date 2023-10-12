@@ -97,7 +97,9 @@ seleccionar.addEventListener("change", () =>{
     }else if (opciónDeAtencion === "turnos") {
         generarCalendario();
         imprimirHora();
-        seleccionDeDoctor(opciónDeAtencion);
+        filtrarDoctores();
+    }else if(opciónDeAtencion === "salir"){
+        window.location.reload();
     }
 });
 
@@ -159,41 +161,8 @@ const turno = document.querySelector (".turno");
 
 const doctor = document.querySelector(".doctor")
 
-function seleccionDeDoctor(opciónDeAtencion) {
-    if (opciónDeAtencion === "turnos") {
-      doctor.innerHTML = `
-        <select name="" >
-          <option value="pediatria" class="pediatria">pediatria</option>
-          <option value="dermatologia" class="dermatologia">dermatologia</option>
-          <option value="cardiologia" class="cardiologia">cardiologia</option>
-          <option value="fisioterapia" class="fisioterapia">fisioterapia</option>
-        </select>
-        <label>
-            <input type="radio" name="genero" value="hombre"> Hombre
-        </label>
-        <label>
-            <input type="radio" name="genero" value="mujer"> Mujer
-        </label>
-      `;
-    }
-  }
 
-  function filtrarDoctores() {
-    const generoSeleccionado = document.getElementById('generoSelect').value;
-    const especialidadSeleccionada = document.getElementById('especialidadSelect').value;
-  
-    const resultadoDoctores = doctores.filter(doctor => {
-      if (generoSeleccionado && doctor.genero !== generoSeleccionado) {
-        return false;
-      }
-      if (especialidadSeleccionada && doctor.especialidad !== especialidadSeleccionada) {
-        return false;
-      }
-      return true;
-    });
-  
-    mostrarResultado(resultadoDoctores);
-  }
+
   
 function mostrarResultado(doctoresFiltrados) {
     const resultadoDoctoresDiv = document.getElementById('resultadoDoctores');
@@ -211,16 +180,43 @@ function mostrarResultado(doctoresFiltrados) {
       foto.alt = `Foto de ${doctor.nombre}`;
       doctorDiv.appendChild(foto);
       
-      const texto = document.createElement('li'); // Crea un elemento de párrafo para el texto
-      texto.textContent = `
-        ${doctor.nombre} - 
-        ${doctor.especialidad} - 
-        ${doctor.genero} -
-        ${doctor.duracion} -
-        ${doctor.recibido}
+      const texto = document.createElement('div'); // Crea un elemento de párrafo para el texto
+      texto.innerHTML = `
+        <li>${doctor.nombre}</li> 
+        <li>${doctor.especialidad}</li> 
+        <li>${doctor.genero}</li> 
+        <li>${doctor.duracion}</li> 
+        <li>${doctor.recibido}</li>
       `;
       doctorDiv.appendChild(texto); // Agrega el párrafo con el texto al div
       
       resultadoDoctoresDiv.appendChild(doctorDiv);
     });
+  }
+
+
+  function filtrarDoctores() {
+    const generoSeleccionado = document.getElementById('generoSelect').value;
+    const especialidadSeleccionada = document.getElementById('especialidadSelect').value;
+    
+    const resultadoDoctores = doctores.filter(doctor => {
+      if (generoSeleccionado && doctor.genero !== generoSeleccionado) {
+        return false;
+      }
+      if (especialidadSeleccionada && doctor.especialidad !== especialidadSeleccionada) {
+        return false;
+      }
+      return true;
+    });
+    
+    mostrarResultado(resultadoDoctores);
+    
+    const opciónDeAtencion = seleccionar.value;
+    if (opciónDeAtencion === "turnos") {
+      // Muestra el formulario HTML cuando se selecciona "turnos"
+      document.getElementById('doctorSelectionForm').style.display = 'block';
+    } else {
+      // Oculta el formulario en otros casos
+      document.getElementById('doctorSelectionForm').style.display = 'none';
+    }
   }

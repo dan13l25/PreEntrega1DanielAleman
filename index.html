@@ -16,21 +16,41 @@
         </nav>
     </header>
     <main>
-        <section>
-            <div>
+        <section >
+            <div class="hospital">
                 <h2>Sobre Nosotros</h2>
                 <p>Somos un nuevo hospital que acaba de abrir pero nuestro personal esta capacitado para ayudarlos con
                     su emergencias medicas y contamos con el equipo necesario para trabajar</p>
-                <img src="./img/Hospital.jpg" alt="">
             </div>
-            <div>
+            <div class="opciones">
                 <select name="" id="atencion">
                     <option value="">Sistema de atencion</option>
                     <option value="consulta">Consultas</option>
                     <option value="turnos" class="turnos">Pedir turnos</option>
                     <option value="salir" class="salir">Salir</option>
                 </select>
-                
+            <form id="doctorSelectionForm" style="display: none;">
+            <label for="generoSelect">Género:</label>
+            <select id="generoSelect">
+              <option value="">Todos</option>
+              <option value="Hombre">Hombre</option>
+              <option value="Mujer">Mujer</option>
+            </select>
+        
+            <label for="especialidadSelect">Especialidad:</label>
+            <select id="especialidadSelect">
+              <option value="">Todas</option>
+              <option value="Pediatria">Pediatria</option>
+              <option value="Dermatologia">Dermatologia</option>
+              <option value="Cardiologia">Cardiologia</option>
+              <option value="Fisioterapia">Fisioterapia</option>
+            </select>
+        
+            <button type="button" onclick="filtrarDoctores()">Filtrar</button>
+          </form>
+        
+          <div id="resultadoDoctores">
+          </div>
             </div>
             <div class="consulta"></div>
             <div class="doctor"></div>
@@ -63,7 +83,7 @@
                 <p class="turno"></p>
                 <p class="horaEscogida"></p>
             </div>
-            <h3>Farmacia online</h3>
+            <h3 class="farmaciaOnline">Farmacia online</h3>
             <section class="farmacia">
                 <div class="articuloUno">
                     <img src="./img/aerotina.jpg" alt="caja de aerotina">
@@ -95,29 +115,7 @@
                 </div>
             </section>
         </section>
-        <form id="doctorSelectionForm">
-            <label for="generoSelect">Género:</label>
-            <select id="generoSelect">
-              <option value="">Todos</option>
-              <option value="Hombre">Hombre</option>
-              <option value="Mujer">Mujer</option>
-            </select>
         
-            <label for="especialidadSelect">Especialidad:</label>
-            <select id="especialidadSelect">
-              <option value="">Todas</option>
-              <option value="Pediatria">Pediatria</option>
-              <option value="Dermatologia">Dermatologia</option>
-              <option value="Cardiologia">Cardiologia</option>
-              <option value="Fisioterapia">Fisioterapia</option>
-            </select>
-        
-            <button type="button" onclick="filtrarDoctores()">Filtrar</button>
-          </form>
-        
-          <div id="resultadoDoctores">
-            <!-- Aquí se mostrarán los doctores filtrados -->
-          </div>
     </main>
     <footer>
 
