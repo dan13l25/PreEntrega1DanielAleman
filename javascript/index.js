@@ -214,10 +214,10 @@ const doctores = [
     recibido: 'Graduado de la Universidad Austral',
     foto: './img/Fisioterapia 2.jpg',
   },
-];
+]
 
 function sistemaDeTurnos(primerTurno, ultimoTurno) {
-  let numeroDeTurno = Math.ceil(Math.random() * 70);
+  let numeroDeTurno = Math.ceil(Math.random() * 70)
   while (primerTurno >= 1 && ultimoTurno <= 60) {
     if (numeroDeTurno <= ultimoTurno) {
       turno.innerHTML = `
@@ -228,35 +228,41 @@ function sistemaDeTurnos(primerTurno, ultimoTurno) {
       <h3>Ya no hay turnos para ese día</h3>
       `
     }
-    break;
+    break
   }
 }
 
-let botonesCreados = true;
-function crearBotones() {
-  if (botonesCreados) {
-    return; 
-  }}
-
 const horaElegida = document.querySelector(".horaEscogida")
+let botonesCreados = false
+
 function imprimirHora(hora) {
-  let botonesCreados = false;
-
-  
   horaElegida.innerHTML = `
-  <h3>Seleccionaste la hora ${hora}</h3>
-  `//("Seleccionaste la hora " + hora);
-const horasMañana = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM"];
-
-const horasMañanaDiv = document.querySelector(".horasMañana");
-horasMañana.forEach(function(hora) {
-  const boton = document.createElement("button");
-  boton.textContent = hora;
-  boton.addEventListener("click", function() {
-      imprimirHora(hora);
-  });
-  horasMañanaDiv.appendChild(boton);
-  botonesCreados = false;
-});
+    <h3>Seleccionaste la hora ${hora}</h3>
+  `
 }
+
+const horasMañana = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM"];
+const horasMañanaDiv = document.querySelector(".horasMañana");
+
+function crearBotonesHorario() {
+  if (!botonesCreados) {
+    horasMañana.forEach(function(hora) {
+      const boton = document.createElement("button")
+      boton.textContent = hora
+      boton.addEventListener("click", function() {
+        imprimirHora(hora)
+      })
+      horasMañanaDiv.appendChild(boton)
+    })
+    botonesCreados = true
+  }
+}
+
+/*function escogerHorario(hora){
+  if (opciónDeAtencion === "turnos")
+    imprimirHora(hora)
+  else{
+    horaElegida.innerHTML = `<p>ppp</p>`
+  }
+}*/
 

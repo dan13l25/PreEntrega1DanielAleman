@@ -16,10 +16,11 @@ h1{
 }
 .hospital {
     background-image: url(../img/Hospital.jpg);
-    background-size: 100%; 
+    background-size: cover;
     background-repeat: no-repeat; 
     background-position: center;
-    height: 300px;
+    background-attachment: fixed;
+    height: 350px;
 } 
 .hospital  h2{
     text-align: center;
