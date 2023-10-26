@@ -118,4 +118,13 @@ function crearBotonesHorario() {
   }
 }
 
+function precioDeMercado(){
+  letrero.innerHTML = `
+  <h3>Precios de medicamento</h3>
+  <p>Aqui te detallamos los precios de los medicamentos de libre venta</p>
+  <p>Los precios pueden variar dependiendo de la farmacia que los vendan</p>
+  `
+}
+
+
 
