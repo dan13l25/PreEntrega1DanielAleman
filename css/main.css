@@ -82,7 +82,9 @@ h1{
     margin-left: 50px;
     font-size: 25px;
 }
-
+tr{
+    width: 90px;
+}
 table {
     border-collapse: collapse;
     width: 100%;
@@ -94,7 +96,7 @@ th, td {
 }
 td{
     background-color: #f2f2f2;
-
+    width: 200px;
 }
 th {
     background-color: #f2f2f2;

@@ -131,6 +131,28 @@ function generarCalendario() {
   const cuerpoCalendario = document.getElementById('cuerpo-calendario')
   cuerpoCalendario.innerHTML = ''
 
+  // Agregar el código HTML
+  cuerpoCalendario.innerHTML = `
+    <h1>Calendario</h1>
+    <div class="nav-buttons">
+        <button id="btnMesAnterior">Mes Anterior</button>
+        <button id="btnMesSiguiente">Mes Siguiente</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Domingo</th>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+                <th>Sábado</th>
+            </tr>
+        </thead>
+    </table>
+  `;
+
   let fechaActual = 1
 
   for (let i = 0; i < 6; i++) {
@@ -156,24 +178,25 @@ function generarCalendario() {
                 <h3>Has elegido el día ${fechaClic} </h3> 
                 `
                 sistemaDeTurnos(1, 60)
-                
             }
-        });
+        })
           fila.appendChild(celda)
       }
       cuerpoCalendario.appendChild(fila)
   }
-};
 
-document.getElementById('btnMesAnterior').addEventListener('click', () => {
-    mesActual.setMonth(mesActual.getMonth() - 1)
-    generarCalendario()
-});
+  document.getElementById('btnMesAnterior').addEventListener('click', () => {
+      mesActual.setMonth(mesActual.getMonth() - 1)
+      generarCalendario()
+  })
 
-document.getElementById('btnMesSiguiente').addEventListener('click', () => {
-    mesActual.setMonth(mesActual.getMonth() + 1)
-    generarCalendario()
-});
+  document.getElementById('btnMesSiguiente').addEventListener('click', () => {
+      mesActual.setMonth(mesActual.getMonth() + 1)
+      generarCalendario()
+  })
+}
+
+
 
 const horario = document.querySelector (".horario")
 const turno = document.querySelector (".turno")
@@ -204,11 +227,11 @@ function mostrarResultado(doctoresFiltrados) {
       <li>${doctor.genero}</li> 
       <li>${doctor.duracion}</li> 
       <li>${doctor.recibido}</li>
-    `;
+    `
     doctorDiv.appendChild(texto) 
     
     resultadoDoctoresDiv.appendChild(doctorDiv)
-  });
+  })
 }
 
 
@@ -237,11 +260,11 @@ function formularioDoctor() {
 
       <button type="button" class="filtrar" id="filtrarButton">Filtrar</button>
     </form>
-  `;
+  `
 
   const filtrarBoton = document.querySelector('.filtrar');
   filtrarBoton.addEventListener('click', function () {
-    filtrarDoctores();
+    filtrarDoctores()
   });
 
   function filtrarDoctores() {
@@ -250,12 +273,12 @@ function formularioDoctor() {
 
     const resultadoDoctores = doctores.filter((doctor) => {
       if (generoSeleccionado && doctor.genero !== generoSeleccionado) {
-        return false;
+        return false
       }
       if (especialidadSeleccionada && doctor.especialidad !== especialidadSeleccionada) {
-        return false;
+        return false
       }
-      return true;
+      return true
     });
     mostrarResultado(resultadoDoctores);
   }
