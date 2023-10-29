@@ -1,12 +1,12 @@
 function Medicina (nombre, precio, funcion){
-  this.nombre = nombre;
-  this.precio = precio;
-  this.funcion = funcion;
+  this.nombre = nombre
+  this.precio = precio
+  this.funcion = funcion
 }
-const medicina1 = new Medicina ("Ibupofreno", 850, "Ayuda a bajar la fiebre y baja la fiebre");
-const medicina2 = new Medicina ("Aerotina",975, "Sirve para las alergias");
-const medicina3 = new Medicina ("Sertal Perlas",1120, "Para aliviar dolores digestivos");
-const medicina4 = new Medicina ("Geniol",1050, "Para dolores de cabeza, musculares y articulares");
+const medicina1 = new Medicina ("Ibupofreno", 850, "Ayuda a bajar la fiebre y baja la fiebre")
+const medicina2 = new Medicina ("Aerotina",975, "Sirve para las alergias")
+const medicina3 = new Medicina ("Sertal Perlas",1120, "Para aliviar dolores digestivos")
+const medicina4 = new Medicina ("Geniol",1050, "Para dolores de cabeza, musculares y articulares")
 
 
 const doctores = [
@@ -83,22 +83,22 @@ function generarNumeroDeTurno(primerTurno, ultimoTurno) {
 
     if (primerTurno >= 1 && ultimoTurno <= 60) {
       if (numeroDeTurno <= ultimoTurno) {
-        const mensaje = `Su número de turno es ${numeroDeTurno}`;
-        localStorage.setItem('numeroDeTurno', numeroDeTurno);
-        resolve(mensaje);
+        const mensaje = `Su número de turno es ${numeroDeTurno}`
+        localStorage.setItem('numeroDeTurno', numeroDeTurno)
+        resolve(mensaje)
       } else {
         const mensaje = 'Ya no hay turnos para ese día';
-        reject(mensaje);
+        reject(mensaje)
       }
     } else {
       const mensaje = 'Error en los valores de primerTurno y ultimoTurno';
-      reject(mensaje);
+      reject(mensaje)
     }
   });
 }
 
-const primerTurno = 10; 
-const ultimoTurno = 60;
+const primerTurno = 10;
+const ultimoTurno = 60
 const turnoNumero = document.querySelector (".turnoNumero")
 
 
@@ -141,7 +141,6 @@ function precioDeMercado(){
 const reinicio = document.querySelector(".reinicio")
 
 
-
 const mostrarDatosBtn = document.querySelector(".mostrarDatos")
 const recuperarDatosDiv = document.querySelector(".recuperarDatos")
 
@@ -164,11 +163,71 @@ mostrarDatosBtn.addEventListener("click", function () {
     html += `<li>Género: ${doctor.genero}</li>`
     html += `<li>Duración: ${doctor.duracion}</li>`
     html += `<li>Recibido: ${doctor.recibido}</li>`
-  });
+  })
   html += "</ul>"
 
   recuperarDatosDiv.innerHTML = html
+  const cancelarButton = document.createElement('button')
+  cancelarButton.textContent = 'Cancelar turno'
+  cancelar.appendChild(cancelarButton)
+
+  cancelarButton.addEventListener('click', function() {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "No hay vuelta atrás",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('doctoresInfo')
+        localStorage.removeItem('mensajeDiaEscogido')
+        localStorage.removeItem('numeroDeTurno')
+        localStorage.removeItem('horaElegida')
+        localStorage.removeItem('horaConfirmacion')
+  
+        recuperarDatosDiv.innerHTML = '';
+  
+        Swal.fire(
+          'Listo!',
+          'El turno fue cancelado',
+          'success'
+        ).then(() => {
+          // Recargar la página después de que se muestre el SweetAlert
+          location.reload();
+        });
+      } else {
+        // Recargar la página si el usuario presiona "Cancelar" en el SweetAlert
+        location.reload();
+      
+      }
+    })
+  })
 })
+
+const cancelar = document.querySelector(".cancelar")
+
+
+
+
+function confirmarTurno() {
+  const confirmar = document.querySelector(".confirmar")
+  confirmar.innerHTML = `
+  <form > 
+      <input type="submit" value="Confirmar" class="confirmarBtn">
+  `
+  
+  const confirmarBtn = document.querySelector(".confirmarBtn")
+  const hora = document.getElementById("hora").textContent;
+
+  confirmarBtn.addEventListener("click", (evt) => {
+      guardarHoraEnStorage(hora)
+      confirmar.reset()
+  })
+}
 
 function obtenerFechaYHora() {
   fetch("http://worldtimeapi.org/api/timezone/America/Argentina/Jujuy")
@@ -187,28 +246,5 @@ function guardarHoraEnStorage(hora) {
   localStorage.setItem("horaConfirmacion", hora);
 }
 
-function confirmarTurno() {
-  const confirmar = document.querySelector(".confirmar")
-  confirmar.innerHTML = `
-  <form > 
-      <input type="submit" value="Confirmar" class="confirmarBtn">
-  `
-  
-  const confirmarBtn = document.querySelector(".confirmarBtn")
-  const hora = document.getElementById("hora").textContent;
-
-  confirmarBtn.addEventListener("click", (evt) => {
-      guardarHoraEnStorage(hora)
-      confirmar.reset()
-  })
-}
-
 obtenerFechaYHora()
 setInterval(obtenerFechaYHora, 1000)
-
-
-
-
-
-
-

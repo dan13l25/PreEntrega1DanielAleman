@@ -217,24 +217,24 @@ const doctor = document.querySelector(".doctor")
 
 
 function mostrarResultado(doctoresFiltrados) {
-  const resultadoDoctoresDiv = document.getElementById('resultadoDoctores');
-  resultadoDoctoresDiv.innerHTML = '';
+  const resultadoDoctoresDiv = document.getElementById('resultadoDoctores')
+  resultadoDoctoresDiv.innerHTML = ''
 
   if (doctoresFiltrados.length === 0) {
-    resultadoDoctoresDiv.textContent = 'No se encontraron doctores que coincidan con los criterios de búsqueda.';
+    resultadoDoctoresDiv.textContent = 'No se encontraron doctores que coincidan con los criterios de búsqueda.'
     return;
   }
 
   const doctoresInfo = [];
 
   doctoresFiltrados.forEach(doctor => {
-    const doctorDiv = document.createElement('div');
-    const foto = document.createElement('img');
-    foto.src = doctor.foto;
-    foto.alt = `Foto de ${doctor.nombre}`;
-    doctorDiv.appendChild(foto);
+    const doctorDiv = document.createElement('div')
+    const foto = document.createElement('img')
+    foto.src = doctor.foto
+    foto.alt = `Foto de ${doctor.nombre}`
+    doctorDiv.appendChild(foto)
 
-    const texto = document.createElement('div');
+    const texto = document.createElement('div')
     texto.innerHTML = `
       <li>${doctor.nombre}</li>
       <li>${doctor.especialidad}</li>
@@ -242,9 +242,9 @@ function mostrarResultado(doctoresFiltrados) {
       <li>${doctor.duracion}</li>
       <li>${doctor.recibido}</li>
     `;
-    doctorDiv.appendChild(texto);
+    doctorDiv.appendChild(texto)
 
-    resultadoDoctoresDiv.appendChild(doctorDiv);
+    resultadoDoctoresDiv.appendChild(doctorDiv)
 
     doctoresInfo.push({
       nombre: doctor.nombre,
@@ -255,12 +255,12 @@ function mostrarResultado(doctoresFiltrados) {
     });
   });
 
-  localStorage.setItem('doctoresInfo', JSON.stringify(doctoresInfo));
+  localStorage.setItem('doctoresInfo', JSON.stringify(doctoresInfo))
 }
 
 
 function formularioDoctor() {
-  const formulario = document.querySelector('.formulario');
+  const formulario = document.querySelector('.formulario')
   formulario.innerHTML = `
     <form id="doctorSelectionForm">
       <label for="generoSelect">Género:</label>
@@ -283,7 +283,7 @@ function formularioDoctor() {
     </form>
   `
 
-  const filtrarBoton = document.querySelector('.filtrar');
+  const filtrarBoton = document.querySelector('.filtrar')
   filtrarBoton.addEventListener('click', function () {
     filtrarDoctores()
   })
