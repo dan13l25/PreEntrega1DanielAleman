@@ -82,6 +82,23 @@ h1{
     margin-left: 50px;
     font-size: 25px;
 }
+.horasMañana{
+    display: flex;
+    align-items: center;
+}
+.horasMañana button{
+    margin: 15px 30px 25px 30px;
+    padding: 15px 15px 15px 15px;
+}
+.turno p{
+    margin: 15px 0px 15px 90px;
+    font-size: 23px;
+}
+.turno .confirmar input{
+    width: 150px;
+    height: 40px;
+    margin: 0px 0px 20px 90px;
+}
 tr{
     width: 90px;
 }

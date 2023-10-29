@@ -76,15 +76,17 @@ const doctores = [
   },
 ]
 
+const turnoNumero = document.querySelector (".turnoNumero")
 function sistemaDeTurnos(primerTurno, ultimoTurno) {
   let numeroDeTurno = Math.ceil(Math.random() * 70)
   while (primerTurno >= 1 && ultimoTurno <= 60) {
     if (numeroDeTurno <= ultimoTurno) {
-      turno.innerHTML = `
+      turnoNumero.innerHTML = `
       <h3>Su número de turno es ${numeroDeTurno}</h3>
       `
+      localStorage.setItem('numeroDeTurno', numeroDeTurno)
     } else {
-      turno.innerHTML = `
+      turnoNumero.innerHTML = `
       <h3>Ya no hay turnos para ese día</h3>
       `
     }
@@ -99,6 +101,7 @@ function imprimirHora(hora) {
   horaElegida.innerHTML = `
     <h3>Seleccionaste la hora ${hora}</h3>
   `
+  localStorage.setItem('horaElegida', hora)
 }
 
 const horasMañana = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM"];
@@ -125,6 +128,27 @@ function precioDeMercado(){
   <p>Los precios pueden variar dependiendo de la farmacia que los vendan</p>
   `
 }
+
+const reinicio = document.querySelector(".reinicio")
+
+function confirmarTurno() {
+  const confirmar = document.querySelector(".confirmar");
+  confirmar.innerHTML = `
+  <form > 
+    <input type="submit" value="Confirmar" class="confirmarBtn">
+  `
+
+  const confirmarBtn = document.querySelector(".confirmarBtn");
+
+  confirmarBtn.addEventListener("click", (evt) => {
+    confirmar.reset()
+  })
+}
+
+
+
+
+
 
 
 
