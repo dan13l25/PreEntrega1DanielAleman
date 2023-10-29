@@ -100,7 +100,6 @@ const consulta = document.querySelector(".consulta")
 seleccionar.addEventListener("change", () =>{
     const opciónDeAtencion = seleccionar.value
     if(opciónDeAtencion === "consulta"){
-      turno.style.display = "none"
       consulta.innerHTML = `
       <h3>Horario de atención</h3>
       <p>Desde 08:00 am hasta 13:00 pm 
@@ -156,40 +155,39 @@ function generarCalendario() {
   let fechaActual = 1
 
   for (let i = 0; i < 6; i++) {
-      const fila = document.createElement('tr');
-      for (let j = 0; j < 7; j++) {
-        const celda = document.createElement('td');
-        if (i === 0 && j < primerDiaDelMes.getDay()) {
-          celda.textContent = ''
-        } else if (fechaActual > ultimoDiaDelMes.getDate()) {
-          celda.textContent = ''
-        } else {
-          celda.textContent = fechaActual
-          fechaActual++;
-          }
-          celda.addEventListener("click", function() {
-            const fechaClic = parseInt(celda.textContent, 10)
-            if (fechaClic === 5 || fechaClic === 12 || fechaClic === 19 || fechaClic === 26 ) {
-                horario.innerHTML = `
-                <h3>No se atiende los domingos</h3>
-                `
-            } else {
-                horario.innerHTML = `
-                <h3>Has elegido el día ${fechaClic} </h3> 
-                `
-                //generarNumeroDeTurno(1, 60)
-                generarNumeroDeTurno(primerTurno, ultimoTurno)
-                .then((mensaje) => {
-                  turnoNumero.innerHTML = `<h3>${mensaje}</h3>`;
+    const fila = document.createElement('tr');
+    for (let j = 0; j < 7; j++) {
+      const celda = document.createElement('td');
+      if (i === 0 && j < primerDiaDelMes.getDay()) {
+        celda.textContent = ''
+      } else if (fechaActual > ultimoDiaDelMes.getDate()) {
+        celda.textContent = ''
+      } else {
+        celda.textContent = fechaActual
+        fechaActual++;
+        }
+        celda.addEventListener("click", function() {
+          const fechaClic = parseInt(celda.textContent, 10)
+          if (fechaClic === 5 || fechaClic === 12 || fechaClic === 19 || fechaClic === 26 ) {
+              horario.innerHTML = `
+              <h3>No se atiende los domingos</h3>
+              `
+          } else {
+              horario.innerHTML = `
+              <h3>Has elegido el día ${fechaClic} </h3> 
+              `
+              generarNumeroDeTurno(primerTurno, ultimoTurno)
+              .then((mensaje) => {
+                turnoNumero.innerHTML = `<h3>${mensaje}</h3>`;
+              })
+              .catch((error) => {
+                turnoNumero.innerHTML = `<h3>${error}</h3>`;
+                Swal.fire({
+                  title: 'Error',
+                  text: error,
+                  icon: 'error',
+                  confirmButtonText: 'Aceptar'
                 })
-                .catch((error) => {
-                  turnoNumero.innerHTML = `<h3>${error}</h3>`;
-                  Swal.fire({
-                    title: 'Error',
-                    text: error,
-                    icon: 'error',
-                    confirmButtonText: 'Aceptar'
-                  });
   })
                 confirmarTurno()
                 localStorage.setItem('mensajeDiaEscogido', `Has elegido el día ${fechaClic}`)

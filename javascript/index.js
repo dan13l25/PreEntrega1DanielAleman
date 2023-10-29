@@ -76,29 +76,7 @@ const doctores = [
   },
 ]
 
-/*const turnoNumero = document.querySelector (".turnoNumero")
-function sistemaDeTurnos(primerTurno, ultimoTurno) {
-  let numeroDeTurno = Math.ceil(Math.random() * 70)
-  while (primerTurno >= 1 && ultimoTurno <= 60) {
-    if (numeroDeTurno <= ultimoTurno) {
-      turnoNumero.innerHTML = `
-      <h3>Su número de turno es ${numeroDeTurno}</h3>
-      `
-      localStorage.setItem('numeroDeTurno', numeroDeTurno)
-    } else {
-      turnoNumero.innerHTML = `
-      <h3>Ya no hay turnos para ese día</h3>
-      `
-      Swal.fire({
-        title: 'No hay mas turnos para el dia escogido',
-        text: 'Escoja otro dia',
-        icon: 'error',
-        confirmButtonText: 'Aceptar'
-      })
-    }
-    break
-  }
-}*/
+
 function generarNumeroDeTurno(primerTurno, ultimoTurno) {
   return new Promise((resolve, reject) => {
     let numeroDeTurno = Math.ceil(Math.random() * 70);
@@ -119,24 +97,11 @@ function generarNumeroDeTurno(primerTurno, ultimoTurno) {
   });
 }
 
-// Ejemplo de uso de la promesa
-const primerTurno = 10; // Cambia estos valores según tus necesidades
+const primerTurno = 10; 
 const ultimoTurno = 60;
 const turnoNumero = document.querySelector (".turnoNumero")
 
-/*generarNumeroDeTurno(primerTurno, ultimoTurno)
-  .then((mensaje) => {
-    turnoNumero.innerHTML = `<h3>${mensaje}</h3>`;
-  })
-  .catch((error) => {
-    turnoNumero.innerHTML = `<h3>${error}</h3>`;
-    Swal.fire({
-      title: 'Error',
-      text: error,
-      icon: 'error',
-      confirmButtonText: 'Aceptar'
-    });
-  });*/
+
 
 const horaElegida = document.querySelector(".horaEscogida")
 let botonesCreados = false
