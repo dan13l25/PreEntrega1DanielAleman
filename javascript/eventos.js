@@ -177,7 +177,20 @@ function generarCalendario() {
                 horario.innerHTML = `
                 <h3>Has elegido el día ${fechaClic} </h3> 
                 `
-                sistemaDeTurnos(1, 60)
+                //generarNumeroDeTurno(1, 60)
+                generarNumeroDeTurno(primerTurno, ultimoTurno)
+                .then((mensaje) => {
+                  turnoNumero.innerHTML = `<h3>${mensaje}</h3>`;
+                })
+                .catch((error) => {
+                  turnoNumero.innerHTML = `<h3>${error}</h3>`;
+                  Swal.fire({
+                    title: 'Error',
+                    text: error,
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                  });
+  })
                 confirmarTurno()
                 localStorage.setItem('mensajeDiaEscogido', `Has elegido el día ${fechaClic}`)
             }
@@ -293,4 +306,5 @@ function formularioDoctor() {
     mostrarResultado(resultadoDoctores);
   }
 }
+
 

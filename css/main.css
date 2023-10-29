@@ -52,6 +52,7 @@ h1{
     width: 150px;
     height: 60px;
     font-size: 25px;
+    margin-bottom: 30px;
 }
 .opciones {
     margin: 40px 0px 80px 40px;
@@ -88,6 +89,11 @@ h1{
 .formulario button{
     width: 100px;
     height: 55px;
+    margin-left: 15px;
+}
+.formulario label{
+    font-size: 30px;
+    padding: 0px 15px 0px 15px;
 }
 #atencion{
     margin: 30px 30px 30px 0px;
