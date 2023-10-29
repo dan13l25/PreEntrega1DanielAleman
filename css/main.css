@@ -34,6 +34,21 @@ h1{
     font-size: 30px;
     color: rgb(0, 0, 0);
 }
+.olvidar{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+}
+.olvidar p{
+    font-size: 40px;
+    padding: 0px 0px 30px 0px;
+}
+.olvidar button{
+    width: 150px;
+    height: 60px;
+    font-size: 25px;
+}
 .opciones {
     margin: 40px 0px 80px 40px;
     display: flex;
@@ -190,5 +205,14 @@ th {
     text-align: center;
 
 }
-
-
+.recuperarDatos{
+    padding-left: 50px;
+}
+.recuperarDatos p{
+    font-size: 30px;
+    margin: 10px 0px 10px 0px;
+}
+.recuperarDatos ul li{
+    font-size: 30px;
+    padding: 10px 0px 10px 0px;
+}

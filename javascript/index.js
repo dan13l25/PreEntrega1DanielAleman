@@ -145,6 +145,35 @@ function confirmarTurno() {
   })
 }
 
+const mostrarDatosBtn = document.querySelector(".mostrarDatos");
+const recuperarDatosDiv = document.querySelector(".recuperarDatos");
+
+mostrarDatosBtn.addEventListener("click", function () {
+  // Recupera los datos del JSON almacenados en localStorage
+  const doctoresInfo = JSON.parse(localStorage.getItem("doctoresInfo"));
+
+  // Recupera los datos adicionales de localStorage
+  const mensajeDiaEscogido = localStorage.getItem('mensajeDiaEscogido');
+  const numeroDeTurno = localStorage.getItem('numeroDeTurno');
+  const horaElegida = localStorage.getItem('horaElegida');
+
+  // Crea un HTML para mostrar los datos recuperados
+  let html = `<p>${mensajeDiaEscogido}</p>`;
+  html += `<p>Número de Turno: ${numeroDeTurno}</p>`;
+  html += `<p>Hora Elegida: ${horaElegida}</p>`;
+  html += "<ul>";
+  doctoresInfo.forEach((doctor) => {
+    html += `<li>Nombre: ${doctor.nombre}</li>`;
+    html += `<li>Especialidad: ${doctor.especialidad}</li>`;
+    html += `<li>Género: ${doctor.genero}</li>`;
+    html += `<li>Duración: ${doctor.duracion}</li>`;
+    html += `<li>Recibido: ${doctor.recibido}</li>`;
+  });
+  html += "</ul>";
+
+  // Inserta el HTML en el div "recuperarDatos"
+  recuperarDatosDiv.innerHTML = html;
+});
 
 
 
