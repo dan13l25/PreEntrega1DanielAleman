@@ -131,49 +131,71 @@ function precioDeMercado(){
 
 const reinicio = document.querySelector(".reinicio")
 
+
+
+const mostrarDatosBtn = document.querySelector(".mostrarDatos")
+const recuperarDatosDiv = document.querySelector(".recuperarDatos")
+
+mostrarDatosBtn.addEventListener("click", function () {
+  const doctoresInfo = JSON.parse(localStorage.getItem("doctoresInfo"))
+
+  const mensajeDiaEscogido = localStorage.getItem('mensajeDiaEscogido')
+  const numeroDeTurno = localStorage.getItem('numeroDeTurno')
+  const horaElegida = localStorage.getItem('horaElegida')
+  const horaConfirmacion = localStorage.getItem('horaConfirmacion')
+
+  let html = `<p>${mensajeDiaEscogido}</p>`
+  html += `<p>Número de Turno: ${numeroDeTurno}</p>`
+  html += `<p>Hora Confirmación: ${horaConfirmacion}</p>`
+  html += `<p>Hora Elegida: ${horaElegida}</p>`
+  html += "<ul>"
+  doctoresInfo.forEach((doctor) => {
+    html += `<li>Nombre: ${doctor.nombre}</li>`
+    html += `<li>Especialidad: ${doctor.especialidad}</li>`
+    html += `<li>Género: ${doctor.genero}</li>`
+    html += `<li>Duración: ${doctor.duracion}</li>`
+    html += `<li>Recibido: ${doctor.recibido}</li>`
+  });
+  html += "</ul>"
+
+  recuperarDatosDiv.innerHTML = html
+})
+
+function obtenerFechaYHora() {
+  fetch("http://worldtimeapi.org/api/timezone/America/Argentina/Jujuy")
+      .then(response => response.json())
+      .then(data => {
+          const fechaYHora = new Date(data.datetime);
+          const fechaYHoraFormateada = fechaYHora.toLocaleString();
+          document.getElementById("hora").textContent = fechaYHoraFormateada;
+      })
+      .catch(error => {
+          console.error("Hubo un error al obtener la hora:", error);
+      })
+}
+
+function guardarHoraEnStorage(hora) {
+  localStorage.setItem("horaConfirmacion", hora);
+}
+
 function confirmarTurno() {
-  const confirmar = document.querySelector(".confirmar");
+  const confirmar = document.querySelector(".confirmar")
   confirmar.innerHTML = `
   <form > 
-    <input type="submit" value="Confirmar" class="confirmarBtn">
+      <input type="submit" value="Confirmar" class="confirmarBtn">
   `
-
-  const confirmarBtn = document.querySelector(".confirmarBtn");
+  
+  const confirmarBtn = document.querySelector(".confirmarBtn")
+  const hora = document.getElementById("hora").textContent;
 
   confirmarBtn.addEventListener("click", (evt) => {
-    confirmar.reset()
+      guardarHoraEnStorage(hora)
+      confirmar.reset()
   })
 }
 
-const mostrarDatosBtn = document.querySelector(".mostrarDatos");
-const recuperarDatosDiv = document.querySelector(".recuperarDatos");
-
-mostrarDatosBtn.addEventListener("click", function () {
-  // Recupera los datos del JSON almacenados en localStorage
-  const doctoresInfo = JSON.parse(localStorage.getItem("doctoresInfo"));
-
-  // Recupera los datos adicionales de localStorage
-  const mensajeDiaEscogido = localStorage.getItem('mensajeDiaEscogido');
-  const numeroDeTurno = localStorage.getItem('numeroDeTurno');
-  const horaElegida = localStorage.getItem('horaElegida');
-
-  // Crea un HTML para mostrar los datos recuperados
-  let html = `<p>${mensajeDiaEscogido}</p>`;
-  html += `<p>Número de Turno: ${numeroDeTurno}</p>`;
-  html += `<p>Hora Elegida: ${horaElegida}</p>`;
-  html += "<ul>";
-  doctoresInfo.forEach((doctor) => {
-    html += `<li>Nombre: ${doctor.nombre}</li>`;
-    html += `<li>Especialidad: ${doctor.especialidad}</li>`;
-    html += `<li>Género: ${doctor.genero}</li>`;
-    html += `<li>Duración: ${doctor.duracion}</li>`;
-    html += `<li>Recibido: ${doctor.recibido}</li>`;
-  });
-  html += "</ul>";
-
-  // Inserta el HTML en el div "recuperarDatos"
-  recuperarDatosDiv.innerHTML = html;
-});
+obtenerFechaYHora()
+setInterval(obtenerFechaYHora, 1000)
 
 
 
