@@ -1,0 +1,66 @@
+[
+    {
+      "genero": "Hombre",
+      "nombre": "Cristian Ochoa",
+      "especialidad": "Pediatria",
+      "duracion": "Tiene 9 años ejerciendo la carrera",
+      "recibido": "Graduado de la Universidad de Buenos Aires",
+      "foto": "./img/pediatra.jpg"
+    },
+    {
+      "genero": "Mujer",
+      "nombre": "Martina Luna",
+      "especialidad": "Pediatria",
+      "duracion": "Tiene 12 años ejerciendo la carrera",
+      "recibido": "Graduado de la Universidad del Salvador",
+      "foto": "./img/pediatra2.jpg"
+    },
+    {
+      "genero": "Hombre",
+      "nombre": "Alejandro Gutierrez",
+      "especialidad": "Dermatologia",
+      "duracion": "Tiene 1 año ejerciendo la carrera",
+      "recibido": "Graduado de la Fundación Barcelona",
+      "foto": "./img/dermatologo.jpg"
+    },
+    {
+      "genero": "Mujer",
+      "nombre": "Emilce Dominguez",
+      "especialidad": "Dermatologia",
+      "duracion": "Tiene 5 años ejerciendo la carrera",
+      "recibido": "Graduado de la Universidad Católica Argentina",
+      "foto": "./img/dermatologa.jpg"
+    },
+    {
+      "genero": "Hombre",
+      "nombre": "Ivan Gonzales",
+      "especialidad": "Cardiologia",
+      "duracion": "Tiene 11 años ejerciendo la carrera",
+      "recibido": "Graduado de la Universidad Nacional de Rosario",
+      "foto": "./img/cardiologo.jpg"
+    },
+    {
+      "genero": "Mujer",
+      "nombre": "Sofia Perez",
+      "especialidad": "Cardiologia",
+      "duracion": "Tiene 6 años ejerciendo la carrera",
+      "recibido": "Graduado de la Universidad Nacional de Tucumán",
+      "foto": "./img/cardiologa.jpg"
+    },
+    {
+      "genero": "Hombre",
+      "nombre": "Lucas Torres",
+      "especialidad": "Fisioterapia",
+      "duracion": "Tiene 7 años ejerciendo la carrera",
+      "recibido": "Graduado de la Universidad de Ciencias Empresariales y Sociales",
+      "foto": "./img/fisioterapia.jpg"
+    },
+    {
+      "genero": "Mujer",
+      "nombre": "Daniela Guzman",
+      "especialidad": "Fisioterapia",
+      "duracion": "Tiene 3 años ejerciendo la carrera",
+      "recibido": "Graduado de la Universidad Austral",
+      "foto": "./img/fisioterapia2.jpg"
+    }
+]

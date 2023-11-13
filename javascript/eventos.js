@@ -1,95 +1,3 @@
-function medicinas(){
-  const aerotina = document.querySelector(".articuloUno")
-    aerotina.innerHTML = `
-    <button class="mostrar">Ver descripcion</button>
-    <button class="ocultar">Ocultar descripcion</button>
-    <div class="informacionUno">
-      <img src="./img/aerotina.jpg" alt="caja de aerotina">
-      <li>${medicina2.nombre}</li>
-      <li>Precio: ${medicina2.precio} pesos</li>
-      <li>Funcion: ${medicina2.funcion}</li>
-    </div>  
-    `
-    aerotina.parentNode.appendChild(aerotina)
-    const botonOcultar = document.querySelector(".ocultar")
-    const mostrar = document.querySelector(".mostrar")
-    const informacionUno = document.querySelector(".informacionUno")
-    botonOcultar.addEventListener("click", function () {
-    informacionUno.style.display = "none"
-    })
-    mostrar.addEventListener("click", function(){
-      informacionUno.style.display = "block"
-    })
-
-  const geniol = document.querySelector(".articuloDos")
-    geniol.innerHTML = `
-    <button class="mostrarDos">Ver descripcion</button>
-    <button class="ocultarDos">Ocultar descripcion</button>
-    <div class="informacionDos">
-      <img src="./img/geniol.png" alt="caja de geniol">
-      <li>${medicina4.nombre}</li>
-      <li>Precio: ${medicina4.precio} pesos</li>
-      <li>Funcion: ${medicina4.funcion}</li>
-    </div>
-    `
-    geniol.parentNode.appendChild(geniol)
-    const botonOcultarDos = document.querySelector(".ocultarDos")
-    const mostrarDos = document.querySelector(".mostrarDos")
-    const informacionDos = document.querySelector(".informacionDos")
-    botonOcultarDos.addEventListener("click", function () {
-    informacionDos.style.display = "none"
-    })
-    mostrarDos.addEventListener("click", function(){
-      informacionDos.style.display = "block"
-    })
-  
-  const ibupofreno = document.querySelector(".articuloTres")
-      ibupofreno.innerHTML = `
-      <button class="mostrarTres">Ver descripcion</button>
-      <button class="ocultarTres">Ocultar descripcion</button>
-      <div class="informacionTres">
-        <img src="./img/ibuprofeno.jpg" alt="caja de ibuprofeno">
-        <li>${medicina1.nombre}</li>
-        <li>Precio: ${medicina1.precio} pesos</li>
-        <li>Funcion: ${medicina1.funcion}</li>
-      </div>
-      `
-      ibupofreno.parentNode.appendChild(ibupofreno)
-      const botonOcultarTres = document.querySelector(".ocultarTres")
-      const mostrarTres = document.querySelector(".mostrarTres")
-      const informacionTres = document.querySelector(".informacionTres")
-      botonOcultarTres.addEventListener("click", function () {
-      informacionTres.style.display = "none"
-      })
-      mostrarTres.addEventListener("click", function(){
-        informacionTres.style.display = "block"
-      })
-
-  const sertal = document.querySelector(".articuloCuatro")
-      sertal.innerHTML = `
-      <button class="mostrarCuatro">Ver descripcion</button>
-      <button class="ocultarCuatro">Ocultar descripcion</button>
-      <div class="informacionCuatro">
-        <img src="./img/sertal perlas.jpg" alt="caja de sertal perlas">
-        <li>${medicina3.nombre}</li>
-        <li>Precio: ${medicina3.precio} pesos</li>
-        <li>Funcion: ${medicina3.funcion}</li>
-      </div>
-      `
-      sertal.parentNode.appendChild(sertal)
-      const botonOcultarCuatro = document.querySelector(".ocultarCuatro")
-      const mostrarCuatro = document.querySelector(".mostrarCuatro")
-      const informacionCuatro = document.querySelector(".informacionCuatro")
-      botonOcultarCuatro.addEventListener("click", function () {
-      informacionCuatro.style.display = "none"
-      })
-      mostrarCuatro.addEventListener("click", function(){
-        informacionCuatro.style.display = "block"
-      })
-}
-
-const farmacia = document.querySelector(".farmacia")
-const letrero = document.querySelector(".letrero")
 
 
 
@@ -164,7 +72,7 @@ function generarCalendario() {
         celda.textContent = ''
       } else {
         celda.textContent = fechaActual
-        fechaActual++;
+        fechaActual++
         }
         celda.addEventListener("click", function() {
           const fechaClic = parseInt(celda.textContent, 10)
@@ -178,10 +86,10 @@ function generarCalendario() {
               `
               generarNumeroDeTurno(primerTurno, ultimoTurno)
               .then((mensaje) => {
-                turnoNumero.innerHTML = `<h3>${mensaje}</h3>`;
+                turnoNumero.innerHTML = `<h3>${mensaje}</h3>`
               })
               .catch((error) => {
-                turnoNumero.innerHTML = `<h3>${error}</h3>`;
+                turnoNumero.innerHTML = `<h3>${error}</h3>`
                 Swal.fire({
                   title: 'Error',
                   text: error,
@@ -222,10 +130,10 @@ function mostrarResultado(doctoresFiltrados) {
 
   if (doctoresFiltrados.length === 0) {
     resultadoDoctoresDiv.textContent = 'No se encontraron doctores que coincidan con los criterios de búsqueda.'
-    return;
+    return
   }
 
-  const doctoresInfo = [];
+  const doctoresInfo = []
 
   doctoresFiltrados.forEach(doctor => {
     const doctorDiv = document.createElement('div')
@@ -241,7 +149,7 @@ function mostrarResultado(doctoresFiltrados) {
       <li>${doctor.genero}</li>
       <li>${doctor.duracion}</li>
       <li>${doctor.recibido}</li>
-    `;
+    `
     doctorDiv.appendChild(texto)
 
     resultadoDoctoresDiv.appendChild(doctorDiv)
@@ -252,8 +160,8 @@ function mostrarResultado(doctoresFiltrados) {
       genero: doctor.genero,
       duracion: doctor.duracion,
       recibido: doctor.recibido,
-    });
-  });
+    })
+  })
 
   localStorage.setItem('doctoresInfo', JSON.stringify(doctoresInfo))
 }
@@ -301,7 +209,7 @@ function formularioDoctor() {
       }
       return true
     })
-    mostrarResultado(resultadoDoctores);
+    mostrarResultado(resultadoDoctores)
   }
 }
 

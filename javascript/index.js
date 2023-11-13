@@ -1,3 +1,10 @@
+let medico = []
+fetch ("./javascript/medicos.json")
+  .then(response => response.json ())
+  .then(data => {
+    medico = data
+  })
+
 function Medicina (nombre, precio, funcion){
   this.nombre = nombre
   this.precio = precio
@@ -87,17 +94,17 @@ function generarNumeroDeTurno(primerTurno, ultimoTurno) {
         localStorage.setItem('numeroDeTurno', numeroDeTurno)
         resolve(mensaje)
       } else {
-        const mensaje = 'Ya no hay turnos para ese día';
+        const mensaje = 'Ya no hay turnos para ese día'
         reject(mensaje)
       }
     } else {
-      const mensaje = 'Error en los valores de primerTurno y ultimoTurno';
+      const mensaje = 'Error en los valores de primerTurno y ultimoTurno'
       reject(mensaje)
     }
-  });
+  })
 }
 
-const primerTurno = 10;
+const primerTurno = 10
 const ultimoTurno = 60
 const turnoNumero = document.querySelector (".turnoNumero")
 
@@ -189,19 +196,17 @@ mostrarDatosBtn.addEventListener("click", function () {
         localStorage.removeItem('horaElegida')
         localStorage.removeItem('horaConfirmacion')
   
-        recuperarDatosDiv.innerHTML = '';
+        recuperarDatosDiv.innerHTML = ''
   
         Swal.fire(
           'Listo!',
           'El turno fue cancelado',
           'success'
         ).then(() => {
-          // Recargar la página después de que se muestre el SweetAlert
-          location.reload();
-        });
+          location.reload()
+        })
       } else {
-        // Recargar la página si el usuario presiona "Cancelar" en el SweetAlert
-        location.reload();
+        location.reload()
       
       }
     })
@@ -233,17 +238,17 @@ function obtenerFechaYHora() {
   fetch("http://worldtimeapi.org/api/timezone/America/Argentina/Jujuy")
       .then(response => response.json())
       .then(data => {
-          const fechaYHora = new Date(data.datetime);
-          const fechaYHoraFormateada = fechaYHora.toLocaleString();
-          document.getElementById("hora").textContent = fechaYHoraFormateada;
+          const fechaYHora = new Date(data.datetime)
+          const fechaYHoraFormateada = fechaYHora.toLocaleString()
+          document.getElementById("hora").textContent = fechaYHoraFormateada
       })
       .catch(error => {
-          console.error("Hubo un error al obtener la hora:", error);
+          console.error("Hubo un error al obtener la hora:", error)
       })
 }
 
 function guardarHoraEnStorage(hora) {
-  localStorage.setItem("horaConfirmacion", hora);
+  localStorage.setItem("horaConfirmacion", hora)
 }
 
 obtenerFechaYHora()
