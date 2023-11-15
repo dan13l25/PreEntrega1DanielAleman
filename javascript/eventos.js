@@ -1,6 +1,4 @@
-
 let mesActual = new Date()
-
 
 function generarCalendario(fecha) {
   const mesSiguiente = new Date(fecha.getFullYear(), fecha.getMonth() + 1, 1)
@@ -55,7 +53,6 @@ function generarDias(primerDiaDelMes, ultimoDiaDelMes, cuerpoCalendario) {
     cuerpoCalendario.appendChild(fila)
   }
 }
-
 
 function agregarEventoCelda(celda) {
   celda.addEventListener("click", function () {

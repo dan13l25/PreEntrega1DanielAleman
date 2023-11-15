@@ -39,8 +39,6 @@ const primerTurno = 10
 const ultimoTurno = 60
 const turnoNumero = document.querySelector (".turnoNumero")
 
-
-
 const horaElegida = document.querySelector(".horaEscogida")
 
 function imprimirHora(hora) {
@@ -64,7 +62,6 @@ function crearBotonesHorario(arrayHoras, contenedor) {
 const horasMañana = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM"]
 const horasMañanaDiv = document.querySelector(".horasMañana")
 let botonesCreados = false
-
 
 const reinicio = document.querySelector(".reinicio")
 const mostrarDatosBtn = document.querySelector(".mostrarDatos")
@@ -172,11 +169,3 @@ function guardarHoraEnStorage(hora) {
 obtenerFechaYHora("America/Argentina/Jujuy")
 
 setInterval(() => obtenerFechaYHora("America/Argentina/Jujuy"), 1000)
-
-
-
-
-
-
-
-
