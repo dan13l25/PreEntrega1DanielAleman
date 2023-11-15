@@ -1,26 +1,3 @@
-const seleccionar = document.querySelector("#atencion")
-const calendario = document.querySelector(".calendario")
-const consulta = document.querySelector(".consulta")
-
-seleccionar.addEventListener("change", () =>{
-    const opciónDeAtencion = seleccionar.value
-    if(opciónDeAtencion === "consulta"){
-      consulta.innerHTML = `
-      <h3>Horario de atención</h3>
-      <p>Desde 08:00 am hasta 13:00 pm 
-      a la tarde desde 17:00 pm hasta 21:00</p>
-      <h3>Metodo de pago</h3>
-      <p>Se acepta tarjeta de crédito, débito, efectivo y transferencia</p>
-        `
-    }else if (opciónDeAtencion === "turnos") {
-      consulta.innerHTML = ``
-        generarCalendario(new Date())
-        formularioDoctor(doctores)
-        crearBotonesHorario(horasMañana, horasMañanaDiv)
-    }else if(opciónDeAtencion === "salir"){
-      window.location.reload()
-  }
-})
 
 let mesActual = new Date()
 
@@ -238,3 +215,26 @@ function filtrarDoctores(doctores) {
   }
 }
 
+const seleccionar = document.querySelector("#atencion")
+const calendario = document.querySelector(".calendario")
+const consulta = document.querySelector(".consulta")
+
+seleccionar.addEventListener("change", () =>{
+    const opciónDeAtencion = seleccionar.value
+    if(opciónDeAtencion === "consulta"){
+      consulta.innerHTML = `
+      <h3>Horario de atención</h3>
+      <p>Desde 08:00 am hasta 13:00 pm 
+      a la tarde desde 17:00 pm hasta 21:00</p>
+      <h3>Metodo de pago</h3>
+      <p>Se acepta tarjeta de crédito, débito, efectivo y transferencia</p>
+        `
+    }else if (opciónDeAtencion === "turnos") {
+      consulta.innerHTML = ``
+        generarCalendario(new Date())
+        formularioDoctor(doctores)
+        crearBotonesHorario(horasMañana, horasMañanaDiv)
+    }else if(opciónDeAtencion === "salir"){
+      window.location.reload()
+  }
+})
