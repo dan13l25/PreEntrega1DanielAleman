@@ -2,7 +2,7 @@ const seleccionar = document.querySelector("#atencion")
 const calendario = document.querySelector(".calendario")
 const consulta = document.querySelector(".consulta")
 
-seleccionar.addEventListener("change", () =>{
+/*seleccionar.addEventListener("change", () =>{
     const opciónDeAtencion = seleccionar.value
     if(opciónDeAtencion === "consulta"){
       consulta.innerHTML = `
@@ -15,12 +15,35 @@ seleccionar.addEventListener("change", () =>{
     }else if (opciónDeAtencion === "turnos") {
       consulta.innerHTML = ``
         generarCalendario(new Date())
-        formularioDoctor()
+        formularioDoctor(doctores)
         crearBotonesHorario(horasMañana, horasMañanaDiv)
     }else if(opciónDeAtencion === "salir"){
       window.location.reload()
   }
-})
+})*/
+seleccionar.addEventListener("change", () => {
+  const opciónDeAtencion = seleccionar.value;
+
+  if (opciónDeAtencion === "consulta") {
+    consulta.innerHTML = `
+      <h3>Horario de atención</h3>
+      <p>Desde 08:00 am hasta 13:00 pm 
+      a la tarde desde 17:00 pm hasta 21:00</p>
+      <h3>Metodo de pago</h3>
+      <p>Se acepta tarjeta de crédito, débito, efectivo y transferencia</p>
+    `;
+    // Limpiar el contenido del formulario cuando no se selecciona "turnos"
+    document.querySelector('.formulario').innerHTML = '';
+  } else if (opciónDeAtencion === "turnos") {
+    consulta.innerHTML = ``;
+    generarCalendario(new Date());
+    // Llamar a la función formularioDoctor solo cuando se selecciona "turnos"
+    formularioDoctor(doctores);
+    crearBotonesHorario(horasMañana, horasMañanaDiv);
+  } else if (opciónDeAtencion === "salir") {
+    window.location.reload();
+  }
+});
 
 let mesActual = new Date()
 
@@ -168,7 +191,7 @@ function mostrarResultado(doctoresFiltrados) {
   localStorage.setItem('doctoresInfo', JSON.stringify(doctoresInfo))
 }
 
-function formularioDoctor() {
+function formularioDoctor(doctores) {
   const formulario = document.querySelector('.formulario')
   formulario.innerHTML = `
     <form id="doctorSelectionForm">
@@ -196,45 +219,45 @@ function formularioDoctor() {
 
   const filtrarBoton = document.querySelector('.filtrar')
   filtrarBoton.addEventListener('click', function () {
-    filtrarDoctores()
+    filtrarDoctores(doctores)
   })
 
-  function mostrarResultado(resultados) {
-    const resultadosDiv = document.getElementById('resultadoDoctores')
-    resultadosDiv.innerHTML = ''
+function mostrarResultado(resultados) {
+  const resultadosDiv = document.getElementById('resultadoDoctores')
+  resultadosDiv.innerHTML = ''
 
-    if (resultados.length === 0) {
-      resultadosDiv.innerHTML = 'No se encontraron doctores que coincidan con los criterios seleccionados.'
-    } else {
-      resultados.forEach(doctor => {
-        const cardDoctor = document.createElement('div')
-        cardDoctor.classList.add('card-doctor')
-        cardDoctor.innerHTML = `
-          <img src="${doctor.foto}" alt="${doctor.nombre}">
-          <h3>${doctor.nombre}</h3>
-          <p>${doctor.especialidad}</p>
-          <p>${doctor.duracion}</p>
-          <p>${doctor.recibido}</p>
-        `
-        resultadosDiv.appendChild(cardDoctor)
-      })
-    }
-  }
-
-  function filtrarDoctores() {
-    const generoSeleccionado = document.getElementById('generoSelect').value
-    const especialidadSeleccionada = document.getElementById('especialidadSelect').value
-
-    const resultadoDoctores = doctores.filter((doctor) => {
-      if (generoSeleccionado && doctor.genero !== generoSeleccionado) {
-        return false
-      }
-      if (especialidadSeleccionada && doctor.especialidad !== especialidadSeleccionada) {
-        return false
-      }
-      return true
+  if (resultados.length === 0) {
+    resultadosDiv.innerHTML = 'No se encontraron doctores que coincidan con los criterios seleccionados.'
+  } else {
+    resultados.forEach(doctor => {
+      const cardDoctor = document.createElement('div')
+      cardDoctor.classList.add('card-doctor')
+      cardDoctor.innerHTML = `
+        <img src="${doctor.foto}" alt="${doctor.nombre}">
+        <h3>${doctor.nombre}</h3>
+        <p>${doctor.especialidad}</p>
+        <p>${doctor.duracion}</p>
+        <p>${doctor.recibido}</p>
+      `
+      resultadosDiv.appendChild(cardDoctor)
     })
-    mostrarResultado(resultadoDoctores)
+  }
+}
+
+function filtrarDoctores(doctores) {
+  const generoSeleccionado = document.getElementById('generoSelect').value
+  const especialidadSeleccionada = document.getElementById('especialidadSelect').value
+
+  const resultadoDoctores = doctores.filter((doctor) => {
+    if (generoSeleccionado && doctor.genero !== generoSeleccionado) {
+      return false
+    }
+    if (especialidadSeleccionada && doctor.especialidad !== especialidadSeleccionada) {
+      return false
+    }
+    return true
+  })
+  mostrarResultado(resultadoDoctores)
   }
 }
 

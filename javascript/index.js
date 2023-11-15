@@ -3,7 +3,6 @@ fetch ("./javascript/medicos.json")
   .then(response => response.json ())
   .then(data => {
     doctores = data
-    formularioDoctor()
   })
 
 function Medicina (nombre, precio, funcion){
@@ -152,13 +151,14 @@ function confirmarTurno(contenedorSelector) {
 
 }
 
-function obtenerFechaYHora() {
-  fetch("http://worldtimeapi.org/api/timezone/America/Argentina/Jujuy")
+function obtenerFechaYHora(zonaHoraria) {
+  fetch(`https://worldtimeapi.org/api/timezone/${zonaHoraria}`)
       .then(response => response.json())
       .then(data => {
           const fechaYHora = new Date(data.datetime)
           const fechaYHoraFormateada = fechaYHora.toLocaleString()
           document.getElementById("hora").textContent = fechaYHoraFormateada
+          guardarHoraEnStorage(fechaYHoraFormateada)
       })
       .catch(error => {
           console.error("Hubo un error al obtener la hora:", error)
@@ -169,5 +169,14 @@ function guardarHoraEnStorage(hora) {
   localStorage.setItem("horaConfirmacion", hora)
 }
 
-obtenerFechaYHora()
-setInterval(obtenerFechaYHora, 1000)
+obtenerFechaYHora("America/Argentina/Jujuy")
+
+setInterval(() => obtenerFechaYHora("America/Argentina/Jujuy"), 1000)
+
+
+
+
+
+
+
+
