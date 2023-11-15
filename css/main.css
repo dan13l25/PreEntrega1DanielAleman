@@ -72,11 +72,19 @@ h1{
     display: flex;
     justify-content: center; 
     align-items: center;
+    flex-direction: column;
 }
 #resultadoDoctores{
     display: flex;
     justify-content: center; 
     align-items: center;
+    font-size: 30px;
+}
+#resultadoDoctores h3{
+    margin: 10px 0px 10px 0px;
+}
+#resultadoDoctores p{
+    margin: 5px 0px 5px 0px;
 }
 .formulario select{
     height: 60px;
