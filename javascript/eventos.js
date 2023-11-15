@@ -92,12 +92,12 @@ function agregarEventos(mesActual) {
   document.getElementById('btnMesAnterior').addEventListener('click', () => {
     mesActual.setMonth(mesActual.getMonth() - 1)
     generarCalendario(mesActual)
-  });
+  })
 
   document.getElementById('btnMesSiguiente').addEventListener('click', () => {
     mesActual.setMonth(mesActual.getMonth() + 1)
     generarCalendario(mesActual)
-  });
+  })
 }
 
 const horario = document.querySelector (".horario")
