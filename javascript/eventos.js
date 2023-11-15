@@ -2,7 +2,7 @@ const seleccionar = document.querySelector("#atencion")
 const calendario = document.querySelector(".calendario")
 const consulta = document.querySelector(".consulta")
 
-/*seleccionar.addEventListener("change", () =>{
+seleccionar.addEventListener("change", () =>{
     const opciónDeAtencion = seleccionar.value
     if(opciónDeAtencion === "consulta"){
       consulta.innerHTML = `
@@ -20,30 +20,7 @@ const consulta = document.querySelector(".consulta")
     }else if(opciónDeAtencion === "salir"){
       window.location.reload()
   }
-})*/
-seleccionar.addEventListener("change", () => {
-  const opciónDeAtencion = seleccionar.value;
-
-  if (opciónDeAtencion === "consulta") {
-    consulta.innerHTML = `
-      <h3>Horario de atención</h3>
-      <p>Desde 08:00 am hasta 13:00 pm 
-      a la tarde desde 17:00 pm hasta 21:00</p>
-      <h3>Metodo de pago</h3>
-      <p>Se acepta tarjeta de crédito, débito, efectivo y transferencia</p>
-    `;
-    // Limpiar el contenido del formulario cuando no se selecciona "turnos"
-    document.querySelector('.formulario').innerHTML = '';
-  } else if (opciónDeAtencion === "turnos") {
-    consulta.innerHTML = ``;
-    generarCalendario(new Date());
-    // Llamar a la función formularioDoctor solo cuando se selecciona "turnos"
-    formularioDoctor(doctores);
-    crearBotonesHorario(horasMañana, horasMañanaDiv);
-  } else if (opciónDeAtencion === "salir") {
-    window.location.reload();
-  }
-});
+})
 
 let mesActual = new Date()
 
@@ -112,7 +89,7 @@ function agregarEventoCelda(celda) {
 
 function manejarClickFecha(fechaClic) {
   const horario = document.querySelector (".horario")
-  if ([5, 12, 19, 26].includes(fechaClic)) {
+  if ([3, 10, 17, 24, 31].includes(fechaClic)) {
     horario.innerHTML = `<h3>No se atiende los domingos</h3>`
   } else {
     horario.innerHTML = `<h3>Has elegido el día ${fechaClic} </h3>`
@@ -149,7 +126,7 @@ function agregarEventos(mesActual) {
 const horario = document.querySelector (".horario")
 const doctor = document.querySelector(".doctor")
 
-function mostrarResultado(doctoresFiltrados) {
+function guardarResultado(doctoresFiltrados) {
   const resultadoDoctoresDiv = document.getElementById('resultadoDoctores')
   resultadoDoctoresDiv.innerHTML = ''
 
@@ -257,7 +234,7 @@ function filtrarDoctores(doctores) {
     }
     return true
   })
-  mostrarResultado(resultadoDoctores)
+  guardarResultado(resultadoDoctores)
   }
 }
 
